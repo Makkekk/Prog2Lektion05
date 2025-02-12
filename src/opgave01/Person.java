@@ -1,6 +1,6 @@
 package opgave01;
 
-public class Person {
+public class Person implements NameFormatter {
     private String firstName;
     private String middleName;
     private String surname;
@@ -13,5 +13,10 @@ public class Person {
 
     public void printName(NameFormatter formatter) {
         System.out.println(formatter.format(firstName, middleName, surname));
+    }
+
+    @Override
+    public String format(String firstName, String middleName, String surname) {
+        return firstName + middleName + surname;
     }
 }

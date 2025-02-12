@@ -2,16 +2,17 @@ package opgave02;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
-public class PeopleArray {
-    private List<Person> people = new ArrayList<>();
+public class PeopleArray<T> {
+    private List<T> items = new ArrayList<>();
 
-    public void addPerson(Person person) {
-        people.add(person);
+    public void addItem(T item) {
+        items.add(item);
     }
 
-    public void printPeople() {
-        System.out.println(people);
+    public void printItem() {
+        System.out.println(items);
     }
 
     /**
@@ -19,12 +20,23 @@ public class PeopleArray {
      * that satisfies the predicate.
      * Returns null, if no person satisfies the predicate.
      */
-    public Person findFirst(PersonPredicate filter) {
-        for (Person person : people) {
-            if (filter.test(person)) {
-                return person;
+    public T findFirst(Predicate<T> filter) {
+        for (T item : items) {
+            if (filter.test(item)) {
+                return item;
             }
         }
         return null;
+    }
+
+    public List<T> findAll(Predicate<T> filter) {
+        List<T> result = new ArrayList<>();
+        for (T item  : items) {
+            if (filter.test(item)) {
+                result.add(item);
+            }
+
+        }
+        return result;
     }
 }

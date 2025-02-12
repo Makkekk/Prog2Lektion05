@@ -1,5 +1,7 @@
 package opgave02;
 
+import java.util.Locale;
+
 public class Person {
     private String name;
     private int age;
@@ -15,6 +17,17 @@ public class Person {
 
     public int getAge() {
         return age;
+    }
+
+    public int countOccurrenceOfI() {
+        String fullName = name.toLowerCase();
+        int count = 0;
+        for (int i = 0; i < fullName.length(); i++) {
+            if (fullName.charAt(i) == 'i') {
+                count++;
+            }
+        }
+        return count;
     }
 
     @Override
